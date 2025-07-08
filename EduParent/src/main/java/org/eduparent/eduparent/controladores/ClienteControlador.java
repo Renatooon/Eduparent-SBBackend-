@@ -14,7 +14,7 @@ import jakarta.persistence.PersistenceContext;
 
 @RestController
 @RequestMapping("/api/v1/clientes")
-@CrossOrigin(origins = "http://localhost:5173")
+//@CrossOrigin(origins = "http://localhost:5173")
 public class ClienteControlador {
 
     @Autowired

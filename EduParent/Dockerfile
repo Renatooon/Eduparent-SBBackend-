@@ -1,14 +1,24 @@
-# Usa una imagen oficial de Java
-FROM openjdk:17
+# Etapa de compilación
+FROM maven:3.9.6-eclipse-temurin-17 AS build
 
-# Crea el directorio de la app
 WORKDIR /app
 
-# Copia el archivo jar
-COPY target/*.jar app.jar
+# Copiamos solo lo necesario, excluyendo .env explícitamente (opcional)
+COPY . .
+# O puedes usar:
+# COPY pom.xml mvnw mvnw.cmd ./
+# COPY src ./src
 
-# Expone el puerto del backend
+RUN mvn clean package -DskipTests
+
+# Etapa de ejecución
+FROM eclipse-temurin:17-jdk-alpine
+
+WORKDIR /app
+
+COPY --from=build /app/target/*.jar app.jar
+
+ENV PORT=9090
 EXPOSE 9090
 
-# Comando para ejecutar el jar
 ENTRYPOINT ["java", "-jar", "app.jar"]

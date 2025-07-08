@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/alumnos")
-@CrossOrigin(origins = {"http://localhost:5173"})
+//@CrossOrigin(origins = {"http://localhost:5173"})
 @RequiredArgsConstructor
 public class AlumnoControlador {
 

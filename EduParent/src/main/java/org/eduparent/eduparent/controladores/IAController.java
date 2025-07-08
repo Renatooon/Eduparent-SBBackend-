@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/ia")
-@CrossOrigin(origins = "*")
+//@CrossOrigin(origins = "*")
 public class IAController {
 
     @Autowired
